@@ -12,20 +12,22 @@ export default function HistoryPage() {
   }, [])
 
   return (
-    <main className="p-6 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-6">体重履歴</h1>
+    <main className="min-h-screen bg-black text-white p-6 max-w-md mx-auto">
+      <h1 className="text-4xl font-bold mb-8">体重履歴</h1>
 
       {weights.length === 0 ? (
-        <p className="text-gray-500">まだ記録がありません</p>
+        <p className="text-zinc-400">まだ記録がありません</p>
       ) : (
         <div data-testid="history-list" className="space-y-3">
           {weights.map((item) => (
             <div
               key={item.date}
-              className="bg-gray-100 p-4 rounded flex justify-between"
+              className="bg-zinc-900 border border-zinc-700 p-5 rounded-xl flex justify-between items-center"
             >
-              <span>{item.date}</span>
-              <span className="font-semibold">{item.weight} kg</span>
+              <span className="text-zinc-300">{item.date}</span>
+              <span className="text-white font-semibold text-lg">
+                {item.weight} kg
+              </span>
             </div>
           ))}
         </div>
