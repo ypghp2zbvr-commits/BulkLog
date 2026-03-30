@@ -13,6 +13,7 @@ export default function WeightPage() {
   const router = useRouter()
   const [weight, setWeight] = useState("")
   const [date, setDate] = useState(getTodayDate())
+  const [isEditingDate, setIsEditingDate] = useState(false)
 
   useEffect(() => {
     const logs = getWeightLogs()
@@ -50,12 +51,37 @@ export default function WeightPage() {
 
       <div className="bg-zinc-900 border border-zinc-700 p-5 rounded-xl mb-6">
         <p className="text-sm text-zinc-400 mb-2">日付</p>
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="w-full rounded-lg p-3 bg-zinc-800 text-white border border-zinc-700 mb-5"
-        />
+
+        {!isEditingDate ? (
+          <div className="mb-5">
+            <div className="w-full rounded-lg p-4 bg-zinc-800 text-white border border-zinc-700">
+              {date}
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsEditingDate(true)}
+              className="mt-3 text-sm text-zinc-300 underline underline-offset-4"
+            >
+              日付を変更
+            </button>
+          </div>
+        ) : (
+          <div className="mb-5">
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="w-full rounded-lg p-3 bg-zinc-800 text-white border border-zinc-700"
+            />
+            <button
+              type="button"
+              onClick={() => setIsEditingDate(false)}
+              className="mt-3 text-sm text-zinc-300 underline underline-offset-4"
+            >
+              日付変更を閉じる
+            </button>
+          </div>
+        )}
 
         <p className="text-sm text-zinc-400 mb-2">体重</p>
 
