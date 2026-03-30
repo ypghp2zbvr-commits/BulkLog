@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import { getWeightLogs, WeightLog } from "@/lib/weightStorage"
 
@@ -16,9 +17,9 @@ export default function HistoryPage() {
       <h1 className="text-4xl font-bold mb-8">体重履歴</h1>
 
       {weights.length === 0 ? (
-        <p className="text-zinc-400">まだ記録がありません</p>
+        <p className="text-zinc-400 mb-6">まだ記録がありません</p>
       ) : (
-        <div data-testid="history-list" className="space-y-3">
+        <div data-testid="history-list" className="space-y-3 mb-6">
           {weights.map((item) => (
             <div
               key={item.date}
@@ -32,6 +33,13 @@ export default function HistoryPage() {
           ))}
         </div>
       )}
+
+      <Link
+        href="/"
+        className="block w-full text-center bg-zinc-800 text-white p-4 rounded-xl text-lg font-semibold border border-zinc-700"
+      >
+        ホームに戻る
+      </Link>
     </main>
   )
 }
