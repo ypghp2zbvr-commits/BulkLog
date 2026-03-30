@@ -59,15 +59,7 @@ export default function WeightPage() {
 
         <p className="text-sm text-zinc-400 mb-2">体重</p>
 
-        <div className="flex items-center gap-3 mb-4">
-          <button
-            type="button"
-            onClick={() => changeWeight(-0.1)}
-            className="px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white font-semibold"
-          >
-            -0.1
-          </button>
-
+        <div className="mb-4">
           <input
             type="number"
             step="0.1"
@@ -75,16 +67,26 @@ export default function WeightPage() {
             placeholder="63.8"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
-            className="flex-1 rounded-lg p-4 text-xl bg-zinc-800 text-white border border-zinc-700 text-center"
+            className="w-full rounded-lg p-4 text-2xl bg-zinc-800 text-white border border-zinc-700 text-center mb-3"
           />
 
-          <button
-            type="button"
-            onClick={() => changeWeight(0.1)}
-            className="px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white font-semibold"
-          >
-            +0.1
-          </button>
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              onClick={() => changeWeight(-0.1)}
+              className="w-full py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white font-semibold"
+            >
+              -0.1
+            </button>
+
+            <button
+              type="button"
+              onClick={() => changeWeight(0.1)}
+              className="w-full py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white font-semibold"
+            >
+              +0.1
+            </button>
+          </div>
         </div>
       </div>
 
