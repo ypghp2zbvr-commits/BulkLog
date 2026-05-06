@@ -2,14 +2,14 @@ import { test, expect } from '@playwright/test'
 import { execPath } from 'process'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/')
+  await page.goto('http://127.0.0.1:3000')
   await page.evaluate(() => {
     localStorage.clear()
   })
 })
 
 test('体重を入力して履歴に表示される', async ({ page }) => {
-  await page.goto('/')
+  await page.goto('http://127.0.0.1:3000')
 
   await page.getByRole('link', { name: '体重を記録' }).click()
 
@@ -31,7 +31,7 @@ test('体重を入力して履歴に表示される', async ({ page }) => {
 
   test('空データを登録できないことを確認する', async ({ page }) => {
     // 1. home画面へ遷移する
-    await page.goto('/');
+    await page.goto('http://127.0.0.1:3000');
 
     // 2.体重記録ボタンを押下する
     // 3. [体重記録]画面へ遷移する（ボタン押下で自動遷移）
@@ -60,7 +60,7 @@ test('体重を入力して履歴に表示される', async ({ page }) => {
 
     test('最小値0.1kgの登録テスト', async ({ page }) => {
     // home画面へ遷移する
-    await page.goto('/');
+    await page.goto('http://127.0.0.1:3000');
 
     // 体重記録ボタンを押下する
     // [体重記録]画面へ遷移する（ボタン押下で自動遷移）
@@ -92,7 +92,7 @@ test('体重を入力して履歴に表示される', async ({ page }) => {
 
   test('体重登録した同日に再度体重登録を行い、結果が上書きされることを確認する', async({ page }) => {
     // 1. 1回目の体重登録  
-    await page.goto('/');
+    await page.goto('http://127.0.0.1:3000');
 
     // 2. 体重を記録ボタンを押下する
     await page.getByRole('link' , { name: '体重を記録' }).click();
