@@ -2,14 +2,14 @@ import { test, expect } from '@playwright/test'
 import { execPath } from 'process'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://localhost:3000')
+  await page.goto('/')
   await page.evaluate(() => {
     localStorage.clear()
   })
 })
 
 test('体重を入力して履歴に表示される', async ({ page }) => {
-  await page.goto('http://localhost:3000')
+  await page.goto('/')
 
   await page.getByRole('link', { name: '体重を記録' }).click()
 
@@ -31,7 +31,7 @@ test('体重を入力して履歴に表示される', async ({ page }) => {
 
   test('空データを登録できないことを確認する', async ({ page }) => {
     // 1. home画面へ遷移する
-    await page.goto('http://localhost:3000');
+    await page.goto('/');
 
     // 2.体重記録ボタンを押下する
     // 3. [体重記録]画面へ遷移する（ボタン押下で自動遷移）
@@ -60,7 +60,7 @@ test('体重を入力して履歴に表示される', async ({ page }) => {
 
     test('最小値0.1kgの登録テスト', async ({ page }) => {
     // home画面へ遷移する
-    await page.goto('http://localhost:3000');
+    await page.goto('/');
 
     // 体重記録ボタンを押下する
     // [体重記録]画面へ遷移する（ボタン押下で自動遷移）
@@ -79,7 +79,7 @@ test('体重を入力して履歴に表示される', async ({ page }) => {
     await page.getByRole('button',{ name: "保存"}).click();
 
       // 履歴ページへ遷移する
-    await page.goto('http://localhost:3000/history');
+    await page.goto('//history');
 
       // 履歴ページ に遷移できたことを確認する（URLを見て確認してる）
     await expect(page).toHaveURL(/.*history$/);
@@ -92,7 +92,7 @@ test('体重を入力して履歴に表示される', async ({ page }) => {
 
   test('体重登録した同日に再度体重登録を行い、結果が上書きされることを確認する', async({ page }) => {
     // 1. 1回目の体重登録  
-    await page.goto('http://localhost:3000');
+    await page.goto('/');
 
     // 2. 体重を記録ボタンを押下する
     await page.getByRole('link' , { name: '体重を記録' }).click();
@@ -138,5 +138,5 @@ test('体重を入力して履歴に表示される', async ({ page }) => {
     // 13. リストの数が1件であることを確認する
     const historyItems = page.locator('[data-testid="history-list"] > div');
     await expect(historyItems).toHaveCount(1);
-    
+
   });

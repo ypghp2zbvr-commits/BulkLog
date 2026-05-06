@@ -9,7 +9,7 @@ export default defineConfig({
   reporter: 'html',
   use: {
     // baseURLを設定することで、テスト内の page.goto('/') が機能します
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://127.0.0.1:3000',
     trace: 'on-first-retry',
   },
 
@@ -22,8 +22,8 @@ export default defineConfig({
 
   /* ここが重要：CI環境で自動的にアプリを立ち上げる設定 */
   webServer: {
-    command: 'npm run build && npm run start', // ビルドしてから起動
-    url: 'http://localhost:3000',
+    command: 'npm run start', // ビルドはymlで実行ずみのためstartだけ
+    url: 'http://127.0.0.1:3000', // localhostではなくIPで指定
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',
     stderr: 'pipe',
