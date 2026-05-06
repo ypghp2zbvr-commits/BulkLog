@@ -22,11 +22,11 @@ export default defineConfig({
 
   /* ここが重要：CI環境で自動的にアプリを立ち上げる設定 */
   webServer: {
-    command: 'npm run dev', // Next.jsの起動コマンド
+    command: 'npm run build && npm run start', // ビルドしてから起動
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',
     stderr: 'pipe',
-    timeout: 120 * 1000, // 起動に時間がかかる場合を考慮して2分に設定
+    timeout: 180 * 1000, // ビルド含めて3分待つ
   },
 });
