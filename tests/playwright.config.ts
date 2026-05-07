@@ -22,7 +22,7 @@ export default defineConfig({
 
   /* ここが重要：CI環境で自動的にアプリを立ち上げる設定 */
   webServer: {
-    command: 'npm run start', // ビルドはymlで実行ずみのためstartだけ
+    command: 'npm run build && npm run start', // ビルドは込みで実行する
     url: 'http://127.0.0.1:3000', // localhostではなくIPで指定
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',
