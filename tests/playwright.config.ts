@@ -25,8 +25,7 @@ export default defineConfig({
     command: 'npm run build && npm run start', // ビルドは込みで実行する
     url: 'http://127.0.0.1:3000', // localhostではなくIPで指定
     reuseExistingServer: !process.env.CI,
-    stdout: 'pipe',
-    stderr: 'pipe',
+
     timeout: 180 * 1000, // ビルド含めて3分待つ
   },
 });
