@@ -79,7 +79,7 @@ test('体重を入力して履歴に表示される', async ({ page }) => {
     await page.getByRole('button',{ name: "保存"}).click();
 
       // 履歴ページへ遷移する
-    await page.goto('//history');
+    await page.goto('/history'); // 相対パスに変更するため修正
 
       // 履歴ページ に遷移できたことを確認する（URLを見て確認してる）
     await expect(page).toHaveURL(/.*history$/);
